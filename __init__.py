@@ -63,12 +63,12 @@ class PulseAudioControlSkill(MycroftSkill):
 
     def handle_set_source_intent(self, message):
         self.speak("Setting default source to " + message.data.get("Device"))
-        source_set = pulse.sink_list()[message.data.get("Device")]
+        source_set = pulse.sink_list()[int(message.data.get("Device"))]
         pulse.default_set(source_set)
 
     def handle_set_sink_intent(self, message):
         self.speak("Setting default sink to " + message.data.get("Device"))
-        sink_set = pulse.sink_list()[message.data.get("Device")]
+        sink_set = pulse.sink_list()[int(message.data.get("Device"))]
         pulse.default_set(sink_set)
 
     def stop(self):
